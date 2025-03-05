@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input{
+            display:block;
+            padding:20px;
+            margin:10px;
+        }
+
+        label{
+            border:1px solid red;
+            padding:20px;
+            margin:20px;
+            background-color:yellow;
+            display: inline-block;
+        } */
+        /* span{
+            border:1px solid blue;
+            padding:20px;
+            margin: 16px 16px 16px 16px;
+            display: inline-block;
+        } */
+
+        .menu-nav{
+            display: block;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 15px;
+            background-color: #FFFFFF;
+            color: #0f0f34;
+            font-size: 16px;
+            font-family: Mulish;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-transform: uppercase;
+        }
+        nav{
+            /* border: 1px solid black; */
+            border-radius: 25px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F8F9FF;
+        
+            
+        }
+        a{
+            text-decoration: none;
+            color: #0f0f34;
+        }
+        .menu{
+            display: flex;
+            
+        }
+        ul li{
+            list-style-type: none;
+            position: relative;
+            margin: 0 10px;
+            
+        }
+        ul li a {
+            
+            border-radius:15px;
+            padding: 15px;
+            border: 1px solid transparent;
+        }
+        ul li a:hover{
+            background-color:#EFF1FF ;
+        }
+        
+        .auth {
+            display: flex;
+        }
+        .auth a{
+            border-radius: 5px;
+            /* border: 1px solid black; */
+            padding: 18px 30px;
+        }
+        .auth a.active{
+            background: #0f0f34;
+            color: white;
+        }
+        .sub-menu{
+            display: none;
+        }
+        .menu a:hover{
+            background: #eff1ff;
+            border: 1px solid #dde1f9;
+        }
+        .menu > li:hover > .sub-menu{
+            display: block;
+            background: #fff;
+            border: 1px solid #dde1f9;
+        }
+
+        .sub-menu a{
+
+            display: inline-block;
+            margin-top: 15px;
+        }
+        /* .sub-menu div{
+            display: inline-block;
+        } */
+        .sub-menu-box{
+            display: flex;
+            justify-content: flex-start;
+            align-self: flex-start;
+           
+        }
+        
+        .menu > li:hover > a      
+         {
+            background: #eff1ff;
+            border: 1px solid #dde1f9;
+        }
+        .sub-menu{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-radius: 12px;
+            background-color: #fff;
+            border: 1px solid #dde1f9;
+            padding: 30px;
+        }
+        .menu > li .sub-menu:hover {
+            background: #fff;
+        }
+        .sub-menu-box ul li{
+    
+        }
+
+    </style>
+</head>
+<body>
+    <!-- HTML Sematics-->
+    <!-- Hầu hết các thẻ trong form đều là thẻ inline: label, input, button,...-->
+    <!-- Thẻ block >< inline -->
+    <!-- <div>
+        <label for="">Email</label>
+        <label for="">Email</label>
+        <label for="">Email</label>
+        <label for="">Email</label>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </div>
+    <p>
+        <span>item1</span>
+        <span>item1</span>
+        <span>item1</span>
+        <span>item1</span>
+        <span>item1</span>
+        <span>item1</span> -->
+    </p>
+    <!-- label, input, textarea, a, button -->
+     <div class="menu-nav">
+        <nav>
+            <ul class="menu">
+                <li><a href="">Framework</a></li>
+                <li><a href="">Demos</a></li>
+                <li>
+                    <a href="">Resources</a>
+                    <div class="sub-menu">
+                       
+                        
+                        
+                        <div class="sub-menu-box">
+                            
+                            <ul>
+                                <div>
+                                    <span style="font-weight: 900;">Top Controls</span>
+                                </div>
+                                <li><a href="">Grid</a></li>
+                                <li><a href="">Chart</a></li>
+                                <li><a href="">Controls</a></li>
+                                <li><a href="">Financial Chart</a></li>
+                            </ul>
+                            <ul>
+                                <div>
+                                    <span style="font-weight: 900;">Top Controls</span>
+                                </div>
+                                <li><a href="">API</a></li>
+                                <li><a href="">Blogs</a></li>
+                                <li><a href="">Knowledge Base</a></li>
+                                <li><a href="">Video</a></li>
+                                <li><a href="">Forums</a></li>
+                                <li><a href="">Licensing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Documentation</a></li>
+            </ul>
+            <div class="auth">
+                <a href="#" >LOG IN</a>
+                <a href="#" class="active">SIGN UP</a>
+            </div>
+        </nav>
+     </div>
+</body>
+</html>
