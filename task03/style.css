@@ -1,0 +1,96 @@
+body{
+    font-family: "Poppins", sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.product-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+
+}
+.item-header .ship{
+    display: inline-flex;
+    background-color: black;
+    color: #fff;
+    font-size:14px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding:4px 8px;
+}
+.item-header h1{
+    font-size: 24px;
+    font-weight: 600;
+    width: 419px;
+}
+
+.item-price{
+    display: flex;
+    flex-direction: column;
+    strike{
+        font-size: 18px;
+        font-weight: 400;
+    }
+    span{
+        font-size: 48px;
+        font-weight: 700;
+    }
+    p{
+        font-size: 14px;
+        font-weight: 400;
+        opacity: 0.6;
+    }
+
+}
+
+.item-btn button{
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #4788E9;
+    width: 100%;
+    box-shadow: 0px 7px 0px 0px #1C57EE;;
+    border: none;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+.item-extra{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    }
+
+.btn-box{
+    display: flex;
+    flex: 1 1 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 442px;
+    gap: 16px;
+    button{
+        display: flex;
+        gap: 10px;
+        border-radius: 8px;
+        border: 2px solid #C9C9DA;
+        background-color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 16px;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.product-card button{
+    cursor: pointer;
+    transition: all ease-in;
+}
+.product-card button:hover{
+    opacity: 0.5;
+}
