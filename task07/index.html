@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+    
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 1272;
+        height: 50px;
+        margin: 0px 120px;
+        margin-bottom: 101px;
+        /* border: 1px solid black; */
+        .name{
+            font-size: 32px;
+            color: #1F1D2A;
+            font-weight: 550;
+        }
+        ul{
+            list-style-type: none;
+            display: flex;
+            li{
+                margin:0 25px;
+                position: relative;
+                padding: 5px 0;
+                a{
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+            }
+            li::before{
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: -10%;
+                    width: 125%;
+                    height: 3px;
+                    border-radius: 3px;
+                    background-color: #1F1D2A;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.3s ease-in-out;
+                }
+                li:hover::before{
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+        }
+        .loggin{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 6px;
+            height: 45px;
+            width: 109px;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+        .loggin:hover{
+            background-color: black ;
+            color: white;
+        }
+    }
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+    .container{
+        margin: 0 auto;
+        width: 1512px;
+        height: 1708px;
+        padding: 42px 0;
+        background: linear-gradient(293deg, #E6E6E4 7.23%, #F0E8E2 97.74%);
+        
+    }
+    .main{
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .info{
+        padding: 80px 120px;
+        h1{
+            display: flex;
+            width: 581px;
+            font-size: 55px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        span{
+            display: flex;
+            width: 431px;
+            color: #9B948E;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .btn1{
+            margin-top: 50px;
+            display: flex;
+            border-radius:6px;
+            background-color: #96C67F;
+            width: 170px;
+            height: 70px;
+            padding: 16px 20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 450;
+            color: black;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .btn1:hover{
+            color: #FFF;
+            background-color: #588e3f;
+        }
+
+    }
+    .banner{
+        display: flex;
+    }
+        .box{
+        border:2px solid red;
+        background-color: yellow;
+        width: 200px;
+        height:200px;
+    }
+    .item{
+        border: 2px dotted blue;
+        width: 50px;
+        height: 50px;
+    }
+    .banner{
+        width: 920px;
+        height:613px;
+        
+        position: relative;
+    }
+    .button{
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(45%, -50%);
+        transition: all ease-in-out;
+        cursor: pointer;
+        svg:hover{
+            fill: blue;
+        }
+    }
+    
+    .img-main{
+        position: absolute;
+        top: 0;
+            img{
+                border-radius: 50%;
+            }
+    }
+    .title{
+        width: 180px;
+        height: 130px;
+        border-radius: 20px;
+        background-color: #FFF;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-flow: column;
+        padding: 20px;
+        h3{
+            color: black;
+            font-size: 16px;
+        }
+        p{
+            color: #9B948E;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+        .stars{
+            
+        }
+    }
+    h5{
+        display: flex;
+        margin: 30px 0;
+        justify-content:center ;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .brand{
+        display: flex;
+        justify-content:center ;
+        position: relative;
+        height: 50px;
+        div>img{
+            margin: 0 60px;
+        }
+    }
+    .career{
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        
+        span{
+            position: relative;
+            z-index: 1;
+        }
+       
+        span::after{
+            content: "";
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transform: translateY(-100%);
+            height: 5.5px;    
+            position: absolute;
+            background-color: rgb(150, 198, 127);
+            width: 100%;
+        }
+
+    }
+    .teachers{
+        padding: 0 120px;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        position: relative;
+        .teacher-img{
+            display: flex;
+            flex-direction: column;
+            width: 290px;
+            height: 450px;
+            border-radius: 20px;
+            background-color: #fff ;
+            overflow: hidden;
+            img{
+                width: 290px;
+                height: 350px;
+                object-fit: cover;
+            }
+            .t-intro{
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 6px;
+                padding: 20px;
+                p{
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+                span{
+                    color: #9B948E;
+                    font-size: 16px;
+                }
+            }
+        }
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="name">Shayna</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Start</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">History</a></li>
+            </ul>
+            <div class="loggin">Sign in</div>
+        </nav>
+                <div class="main">
+                    <div class="info">
+                        <h1>
+                            Learn UI Design
+                            From The Real Expert
+                        </h1>
+                        <span>
+                            Stop wasting time browsing around and start learning
+                            from our designers for your better career
+                        </span>
+                        <div class="btn1">Get Started</div>
+                    </div>
+                    <div class="banner">
+                        <div class="img-main">
+                            <img src="image/5.png" alt="">
+                            <div class="title">
+                                <h3>Corellina Xo</h3>
+                                <p>UI Designer</p>
+                                <div class="stars">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z" fill="#FFB988"/>
+                                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z" fill="#FFB988"/>
+                                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z" fill="#FFB988"/>
+                                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z" fill="#FFB988"/>
+                                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z" fill="#FFB988"/>
+                                        </svg>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <circle cx="40" cy="40" r="40" fill="#9499B7"/>
+                                    <path d="M51 34.8038C55 37.1132 55 42.8868 51 45.1962L39 52.1244C35 54.4338 30 51.547 30 46.9282L30 33.0718C30 28.453 35 25.5662 39 27.8756L51 34.8038Z" fill="white"/>
+                                    </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <h5>Trusted by Global Companies</h5>
+                <div class="brand">
+                    <div><img src="image/apple-11 1.png" alt=""></div>
+                    <div><img src="image/adobe.png" alt=""></div>
+                    <div><img src="image/slack-2 1.png" alt=""></div>
+                    <div><img src="image/spotify-1 1.png" alt=""></div>
+                    <div><img src="image/google-2015 1.png" alt=""></div>
+                </div>        
+        
+                <div class="career">
+                    <p>Grow Today</p>
+                    <h2>Start Your <span>Career</span></h2>
+                </div>
+
+                <div class="teachers">
+                    <div class="teacher-img">
+                        <img src="image/image 1.png" alt="">
+                        <div class="t-intro">
+                            <p>Aisyah</p>
+                            <span>I teach how to start UX</span>
+                        </div>
+                    </div>
+                    <div class="teacher-img">
+                        <img src="image/image 2.png" alt="">
+                        <div class="t-intro">
+                            <p>Angga</p>
+                            <span>I teach how to design test</span>
+                        </div>
+                    </div>
+                    <div class="teacher-img">
+                        <img src="image/image 3.png" alt="">
+                        <div class="t-intro">
+                            <p>Mabdul</p>
+                            <span>I teach how to asses design</span>
+                        </div>
+                    </div>
+                    <div class="teacher-img">
+                        <img src="image/image 4.png" alt="">
+                        <div class="t-intro">
+                            <p>Wo You</p>
+                            <span>I teach how to do icons</span>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+</body>
+</html>
