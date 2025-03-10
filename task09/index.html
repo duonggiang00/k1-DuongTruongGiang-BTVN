@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            margin: 1000px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body{
+            background-color: black;
+        }
+        .sun{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .earth{
+            height: 500px;
+            width: 500px;
+            border-style: solid;
+            border-color: white
+            transparent
+            transparent
+            transparent;
+            border-width: 0.1em 0.1em 0 0;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 10s infinite linear;
+        }
+        .earth::before{
+            content: '';
+            height: 50px;
+            width: 50px;
+            top: 17%;
+            left: 88%;
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            background-color: aqua;
+        }
+        .moon {
+            height: 100px;
+            width: 100px;
+            border-style: solid;
+            border-color: white
+            transparent
+            transparent
+            transparent;
+            border-width: 0.1em 0.1em 0 0;
+            border-radius: 50%;
+            position: absolute;
+            top: 7%;
+            left: 78%;
+            animation: rotate 2.5s infinite linear;
+        }
+        .moon::before {
+            content: '';
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            top: 8px;
+            left: 84%;
+            position: absolute;
+            background-color: gray;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes rotate {
+            to {transform: rotate(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun"></div>
+        <div class="earth">
+            <div class="moon"></div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
