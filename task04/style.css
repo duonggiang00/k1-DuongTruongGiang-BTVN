@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 1213px;
+    height: auto;
+    padding: 100px;
+    margin: 100px auto;
+    border-radius: 16px;
+    background-color: #fff;
+}
+body{
+    font-family: "Merriweather";
+    background-color: #E6EAF8;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+h1{
+    font-size: 32px;
+    font-weight: 900px;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+nav ul{
+    display: flex;
+    margin: 8px 0;
+}
+nav ul li{
+    list-style-type: none;
+    
+}
+nav ul li a{
+    display: flex;
+    /* border: 1px solid black; */
+    padding: 16px;
+    border-radius: 8px;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.8;
+    font-family: 'Poppins';
+    transition:all ease-in-out;
+    cursor: pointer;
+}
+nav ul li a:hover{
+    background-color: #849FFF;
+    color: #fff;
+}
+
+form{
+    width: 327px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 8px;
+    border-radius: 4px;
+    border: 1px solid #BFC8E5;
+}
+form button{
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+}
+input{
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    width: 100%;
+}
+input:focus{
+    outline: none;
+}
+.main{
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.main .user-box{
+    background: #FBFCFF;
+    display: flex;
+    width: 327px;
+    height: 208px;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid white;
+    border-radius: 16px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.main .user-box .image{
+    width: 97px;
+    height: 97px; 
+    border-radius: 50%;
+}
+.box-content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 16px;
+    .tag{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        p{
+        border-radius: 10px;
+        border:1px solid #BFC8E5;
+        padding: 2px 8px;
+        font-family: 'Poppins';
+        color: #516FD4;
+        font-size: 12px;
+        }
+    }
+}
+ .main .user-box:hover{
+    border-radius: 16px;
+    border: 1px solid #BFC8E5;
+    box-shadow: 0px 8px 23px 0px rgba(218, 224, 249, 0.70);
+}
+
+h2{
+    font-size: 18px;
+    font-family: 'Merriweather';
+    font-weight: 900;
+}
+.box-content span{
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 500;
+}
