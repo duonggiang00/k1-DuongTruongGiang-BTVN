@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, .switch-btn {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007AFF;
+    font-size: 16px;
+    color: #FFF;
+    cursor: pointer;
+    transition: 0.3s;
+    outline: none;
+}
+
+button:hover, .switch-btn:hover {
+    background-color: #0056b3;
+}
+
+.loginBox {
+    display: flex;
+    position: relative;
+    width: 640px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.signup {
+    display: flex;
+    position: absolute;
+    left: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Khi focus vào .signup, form signup trượt sang trái */
+.signup:focus {
+    transform: translateX(-100%);
+}
+
+/* Khi focus vào .login, nó trở về ban đầu */
+.login:focus ~ .signup {
+    transform: translateX(0);
+}

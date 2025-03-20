@@ -135,13 +135,16 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    input{
+    form{
         border: 1px solid #9C9C9C;
         padding: 10px 40px 10px 10px;
         gap: 10px;
         font-size: 16px;
         font-weight: 400;
         border-radius: 0px;
+    }
+    input{
+        border: none;
     }
     input:focus{
         outline: none;

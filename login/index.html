@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0 auto;
+            padding: 50px;
+            
+        }
+        .container{
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border: 1px solid black;
+            display: flex;
+            position: relative;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            width: 400px;
+            position: absolute;
+            left: 100%;
+            background-color: yellow;
+        }
+        button{
+            position: absolute;
+            z-index: 1;
+        }
+        button:focus ~ .box2{
+            left: 0;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box1"></div>
+        <div class="pabox">
+            <button>nút</button>
+            <div class="box box2"></div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>
