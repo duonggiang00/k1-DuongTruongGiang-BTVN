@@ -7,10 +7,10 @@ function cleanFalsyValues(){
             newArr.push(arr[i]);
         }
     }
-    console.log(newArr);
+    return(newArr);
 }
-console.log(`Viết hàm nhận vào một mảng và làm sạch các falsy values có trong mảng`)
-cleanFalsyValues(arr)
+document.write("Bài tập 1: " + cleanFalsyValues([1, 0, "", null, "hello", undefined, NaN, 2, 3]))
+document.write("<hr>")
 
 const arr1= [1, 2, 3, 4, 5, 6];
 const arr2= [1, 3, 5, 7];
@@ -23,12 +23,14 @@ function filterEvenNumbers(arr){
             newArr.push(arr[i]);
         }
     }
-    console.log(newArr);
+    if(newArr.length===0){newArr = "không có số chẵn"}
+    return(newArr);
 }
 console.log(`Viết hàm lọc lấy các số chẵn của một mảng`)
-filterEvenNumbers(arr1);
-filterEvenNumbers(arr2);
-filterEvenNumbers(arr3);
+document.write("Bài tập 2: " + filterEvenNumbers(arr1)+"<br>");
+document.write(filterEvenNumbers(arr2) + "<br>");
+document.write(filterEvenNumbers(arr3) +"<br>");
+document.write("<hr>")
 
 
 function filterLongStrings(arr){
@@ -38,12 +40,14 @@ function filterLongStrings(arr){
             newArr.push(arr[i]);
         }
     }
-    console.log(newArr);
+    if(newArr.length===0){newArr = "không có hàm nào dài hơn 5 ký tự"}
+    return(newArr);
 }
-console.log(`Viết hàm lọc lấy các chuỗi có độ dài lớn hơn 5 của mảng các chuỗi`)
-filterLongStrings(["hello", "world", "javascript", "nodejs"]); // Output: ["javascript", "nodejs"]
-filterLongStrings(["hi", "hello world", "a b c", "goodbye!!"]); // Output: ["hello world", "goodbye!!"]
-filterLongStrings(["hi", "bye", "yes"]); // Output: []
+
+document.write("Bài tập 3: " + filterLongStrings(["hello", "world", "javascript", "nodejs"]) +"<br>");
+document.write(filterLongStrings(["hi", "hello world", "a b c", "goodbye!!"]) +"<br>"); 
+document.write(filterLongStrings(["hi", "bye", "yes"]) +"<br>");
+document.write("<hr>");
 
 function findMinMaxAverage(arr){
     let a=arr[1];
@@ -84,14 +88,16 @@ function findMinMaxAverage(arr){
         }
     }
     primeAverage/=count;
+    primeAverage=primeAverage.toFixed(2);
     
-    console.log(`max: ${a}, maxIndex: ${maxIndex}, min: ${b}, minIndex: ${minIndex}, primeAverage: ${primeAverage}`);
-    console.log(newArr);
+    return result =`max: ${a}, max Index: ${maxIndex}, min: ${b}, min Index: ${minIndex}, prime Average: ${primeAverage}`;
+    
 }
 console.log(`Cho trước mảng chứa các số nguyên, viết hàm tìm:`)
-findMinMaxAverage([3, 1, 4, 1, 5, 9, 2, 6]); 
-findMinMaxAverage([5, 5, 2, 2, 1]); 
-findMinMaxAverage([-3, 7, -8, 11, 0]);
+document.write("Bài tập 4: " + findMinMaxAverage([3, 1, 4, 1, 5, 9, 2, 6]) +"<br>"); 
+document.write(findMinMaxAverage([5, 5, 2, 2, 1]) +"<br>"); 
+document.write(findMinMaxAverage([-3, 7, -8, 11, 0]) +"<br>");
+document.write("<hr>");
 
 function insertNumber(arr,num){
     for(let i =0;i<arr.length;i++){
@@ -114,8 +120,8 @@ function insertNumber(arr,num){
     
 }
 console.log(`Viết hàm chèn số vào mảng mà không thay đổi thứ tự tăng dần của mảng.`)
-console.log(insertNumber([1, 3, 5, 7, 9], 6)); 
-console.log(insertNumber([3, "hello", 1, NaN, 4, null], 2));
-console.log(insertNumber([], 5)); 
-console.log(insertNumber([-1, 10, -5, "abc"], -3));
-console.log(insertNumber([5, 2, 8], NaN));
+document.write("Bài tập 5: " +insertNumber([1, 3, 5, 7, 9], 6) +"<br>"); 
+document.write(insertNumber([3, "hello", 1, NaN, 4, null], 2) +"<br>");
+document.write(insertNumber([], 5) +"<br>"); 
+document.write(insertNumber([-1, 10, -5, "abc"], -3) +"<br>");
+document.write(insertNumber([5, 2, 8], NaN) +"<br>");
