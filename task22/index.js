@@ -71,3 +71,20 @@ function removeDuplicate(){
     arr = [...new Set(arr)];
     result.innerHTML = `mảng đã xóa các phần tử trùng lặp là ${arr}`;
 }
+
+function countElement(){
+    let input=document.getElementById('t26-input').value;
+    let arr=input.split(',').map(item=>item.trim());
+    const result=document.getElementById('t26-result');
+    let count={};
+    for(let i=0;i<arr.length;i++){
+        let element=arr[i];
+        count[element]=(count[element]||0)+1;
+    }
+    let keyValue='';
+    for(let value in count){
+        keyValue += `${value}: ${count[value]}`;
+        keyValue +='<br></br>';
+    }
+    result.innerHTML=keyValue;
+}
