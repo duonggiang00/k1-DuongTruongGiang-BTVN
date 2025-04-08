@@ -63,17 +63,11 @@ function sortArrNumber(){
     result.innerHTML= "Mảng sau khi sắp xếp: " + sortedArr.join(","); 
 }
 
-const fruits = [
-    "apple",
-    "banana",
-    "kiwi",
-    "kiwi",
-    "banana",
-    "orange",
-    "apple",
-    "kiwi",
-  ];
 
-function removeDuplicate(arr){
-    const
+function removeDuplicate(){
+    let input=document.getElementById('t25-input').value;
+    let arr=input.split(',').map(item=>item.trim());
+    const result=document.getElementById('t25-result');
+    arr = [...new Set(arr)];
+    result.innerHTML = `mảng đã xóa các phần tử trùng lặp là ${arr}`;
 }
