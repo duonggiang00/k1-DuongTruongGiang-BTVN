@@ -67,9 +67,20 @@ function sortArrNumber(){
 function removeDuplicate(){
     let input=document.getElementById('t25-input').value;
     let arr=input.split(',').map(item=>item.trim());
+    let newArr=[];
+    
     const result=document.getElementById('t25-result');
-    arr = [...new Set(arr)];
-    result.innerHTML = `mảng đã xóa các phần tử trùng lặp là ${arr}`;
+    for(let i = 0; i<arr.length; i++){
+        let check=true;
+        for(let j =0; j<newArr.length;j++){
+            if(arr[i] === newArr[j]){
+                check = false;
+                break;
+            }
+        }
+        if(check){newArr.push(arr[i])}
+    }
+    result.innerHTML = `mảng đã xóa các phần tử trùng lặp là ${newArr}`;
 }
 
 function countElement(){
