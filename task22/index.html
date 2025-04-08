@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">
+        <th colspan="2">Viết hàm checkSymmetricalArr(arr) để kiểm tra mảng có đối xứng hay không</th>
+        <tr>
+            <td><input type="text" id="t22-input" placeholder="Nhập giá trị mảng ví dụ: 1,2,3,4,5"></td>
+            <td><button onclick="checkSymmetricalArr()">Kết quả</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p id="t22-result"></p></td>
+        </tr>
+        <th colspan="2">Đảo ngược mảng không dùng reverse</th>
+        <tr>
+            <td><input type="text" id="t23-input" placeholder="Nhập giá trị mảng ví dụ: 1,2,3,4,5"></td>
+            <td><button onclick="reverseArr()">Kết quả</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p id="t23-result"></p></td>
+        </tr>
+        <th colspan="2">Sắp xếp không dùng sort</th>
+        <tr>
+            <td><input type="text" id="t24-input" placeholder="Nhập giá trị mảng ví dụ: 1,2,3,4,5"></td>
+            <td><button onclick="sortArrNumber()">Kết quả</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p id="t24-result"></p></td>
+        </tr>
+    </table>
+    <script src="index.js"></script>
+</body>
+</html>
