@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[1,2,3,4,5,6,7,1,2,9,2,6,5]
+        function findSecondLargestNumber(arr){
+            if(!arr){return`invalid`}
+            if(arr.length>1){
+                let max=arr[0];
+            let max2=arr[0];
+            for(let i = 0 ; i<arr.length;i++){
+                if(max<arr[i]){max=arr[i]}
+            }
+            const newArr = arr.filter((item)=>item<max)
+            for(let i = 0 ; i<newArr.length;i++){
+                if(max2<newArr[i]){max2=newArr[i]}
+            }
+            return max2
+            } else return `invalid`
+            
+            
+        }
+        console.log(findSecondLargestNumber(arr))
+        console.log(findSecondLargestNumber())
+    </script>
+    
+</body>
+</html>

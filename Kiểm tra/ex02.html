@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let content="Học JavaScript không khó, Học javascript khó đã có CodeFarm lo, CodeFarm - Học là có việc!";
+        function highlightKeyword(content, keyword){
+            const newArr = content.split(" ")
+            for(let i = 0; i<newArr.length;i++){
+                if(newArr[i].toUpperCase()===keyword.toUpperCase()){
+                    newArr[i]="<strong>"+keyword+"</strong>"
+                    // console.log(newArr[i])
+                }
+                
+            }
+            return(newArr.join(" "))
+               
+        }
+        document.writeln(highlightKeyword(content,"Javascript"))
+        // console.log(String.prototype)
+        // let arr = "Hoàng"
+        // console.log(arr.toUpperCase(arr))
+        
+    </script>
+    
+</body>
+</html>

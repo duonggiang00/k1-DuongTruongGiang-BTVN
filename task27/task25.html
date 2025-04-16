@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const fruits = [
+            "apple",
+            "banana",
+            "kiwi",
+            "kiwi",
+            "banana",
+            "orange",
+            "apple",
+            "kiwi",
+        ];
+        function removeDuplicate(arr){
+            return result = arr.reduce((acc,cur)=>{
+                if(!acc.includes(cur)){
+                    acc.push(cur)
+                }
+                return acc
+            },[])
+        }
+        console.log(removeDuplicate(fruits))
+    </script>
+</body>
+</html>

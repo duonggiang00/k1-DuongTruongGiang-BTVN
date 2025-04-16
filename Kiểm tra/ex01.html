@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const listCharacters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        function generatorId(length, prefix = null){
+            if(isFinite(length)&&length<100){
+            let result = "";
+            if(prefix){
+                result += prefix;
+            }
+            
+            for(let i = 0 ; i<length;i++){
+                result+=listCharacters[Math.round(Math.random()*listCharacters.length)]
+            }
+            return result;
+            }
+            else return `độ dài không hợp lệ`
+            
+        }
+        console.log(generatorId(10))
+        
+    </script>
+</body>
+</html>
