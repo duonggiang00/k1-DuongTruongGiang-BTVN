@@ -38,7 +38,7 @@
         .then((user)=>{console.log("user:" , user )
                     return getPurchasesPromise(user.id)
         })
-        .then((purchase)=>{console.log("purschases:", purchase)
+        .then((purchase)=>{console.log("purchases:", purchase)
             let total = 0;
                 purchase.forEach(element => {
                     total+=element.price
