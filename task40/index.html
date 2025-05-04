@@ -39,6 +39,8 @@ getUser(1,(data)=>{
             total += element.price
             if(element.id === purschases[purschases.length-1].id){
                 console.log("tong tien: " + total)
+                console.log("==================")
+                console.log("Promise")
             }
             })
 
@@ -46,8 +48,7 @@ getUser(1,(data)=>{
         
     })
 })
-console.log("==================")
-console.log("Promise")
+
         function getUserPromise(userId) {
             return new Promise((resolve,reject)=>{
                 setTimeout(() => {
