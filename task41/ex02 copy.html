@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #e0e7ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        }
+        .todo-container {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        }
+        h1 {
+        text-align: center;
+        color: #1f2937;
+        margin-bottom: 20px;
+        }
+        .input-section {
+        margin-bottom: 20px;
+        }
+        .input-group {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        }
+        #todoInput {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 5px;
+        }
+        button {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #3b82f6;
+        color: #ffffff;
+        }
+        button:hover {
+        background-color: #2563eb;
+        }
+        .filter-section {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        }
+        .filter-section button {
+        background-color: #e5e7eb;
+        color: #1f2937;
+        }
+        .filter-section button:hover {
+        background-color: #d1d5db;
+        }
+        .filter-section button.active {
+        background-color: #3b82f6;
+        color: #ffffff;
+        }
+        .todo-list {
+        list-style: none;
+        padding: 0;
+        }
+        .todo-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #d1d5db;
+        }
+        .todo-item.completed span.task-text {
+        text-decoration: line-through;
+        color: #6b7280;
+        }
+        .todo-item span.task-text {
+        flex: 1;
+        font-size: 16px;
+        color: #1f2937;
+        }
+        .todo-item .status {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-right: 10px;
+        cursor: pointer;
+        user-select: none;
+        }
+        .todo-item .status.completed {
+        background-color: #10b981;
+        color: #ffffff;
+        }
+        .todo-item .status.active {
+        background-color: #f59e0b;
+        color: #ffffff;
+        }
+        .todo-item button {
+        margin-left: 10px;
+        }
+        .todo-item button.delete {
+        background-color: #ef4444;
+        }
+        .todo-item button.delete:hover {
+        background-color: #dc2626;
+        }
+        .todo-item button.edit {
+        background-color: #8b5cf6;
+        }
+        .todo-item button.edit:hover {
+        background-color: #7c3aed;
+        }
+        .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>Danh Sách Công Việc</h1>
+        <form action="" id="todoForm">
+            <div class="input-section">
+                <div class="input-group">
+                  <input type="text" id="title" placeholder="Nhập công việc mới..." />
+                  <input type="text" id="description" placeholder="Nhập mô tả..." />
+                  <button id="addBtn" type="submit">Add</button>
+                  <button id="resetBtn"  type="button">Reset</button>
+                </div>
+                <div id="errorMessage" class="error-message">Vui lòng nhập công việc!</div>
+              </div>
+        </form>
+        <div class="filter-section">
+          <button onclick="filterTodos('all')" class="active">Tất cả</button>
+          <button onclick="filterTodos('active')">Chưa hoàn thành</button>
+          <button onclick="filterTodos('completed')">Hoàn thành</button>
+        </div>
+        <ul class="todo-list" id="todoList">
+            
+        </ul>
+      </div>
+      
+    </div>
+</body>
+<script>
+    
+    //DOM
+    const todoForm = document.getElementById('todoForm')
+    const todoTitle = document.getElementById('title')
+    const todoDescription = document.getElementById('description')
+    const addBtn = document.getElementById('addBtn')
+    const resetBtn = document.getElementById('resetBtn')
+    const errorMessage = document.getElementById('errorMessage')
+    const todoList = document.getElementById('todoList')
+    
+    //todoServices
+    const todoServices = {
+        getTodos(){
+            return JSON.parse(localStorage.getItem('todos2')||"[]")
+        },
+        saveTodos(todos){
+            return localStorage.setItem('todos2',JSON.stringify(todos))
+        },
+        addTodo(newTodo){
+            const todos = this.getTodos()
+            const updatedTodos = [...todos,newTodo]
+            this.saveTodos(updatedTodos)
+            return updatedTodos
+        },
+        editTodo(id,newTodo){
+            const todos = this.getTodos();
+            const updatedTodos = todos.map(item=>item.id===id?{...item,...newTodo}:item)
+            this.saveTodos(updatedTodos)
+            return updatedTodos
+        },
+        removeTodo(id){
+            const todos = this.getTodos();
+            const updatedTodos = todos.filter(item=>item.id!==id)
+            this.saveTodos(updatedTodos)
+            return updatedTodos
+        },
+        toggleStatus(id){
+            const todos = this.getTodos();
+            const updatedTodos = todos.map(item=>item.id===id?{...item,status:!item.status}:item)
+            this.saveTodos(updatedTodos)
+            return updatedTodos
+        },
+        filterStatus(status){
+            const todos = this.getTodos();
+            const updatedTodos = todos.filter(item=>item.status===status)
+            return updatedTodos
+        },
+    }
+
+    //status
+    let isEditing=false;
+    let idEdit=null
+
+    //*main function
+    function renderTodo(todos=todoServices.getTodos()){
+        todoList.innerHTML="";
+        if(!Array.isArray(todos)){
+            handleErrorMessage="Sai định dạng dữ liệu"
+        }
+        if(todos === 0){
+            handleErrorMessage = "Không có dữ liệu"
+        }
+        todos.forEach(item => {
+            let liElement = document.createElement("li");
+            liElement.className = "todo-item"
+            liElement.innerHTML=
+            `
+            <span class="task-text">${item.id}</span>
+            <span class="task-text">${item.title}</span>
+            <span class="task-text">${item.description}</span>
+            <span class="task-status" onclick="toggleStatus('${item.id}')">${item.status}</span>
+            <button onclick="editTodo('${item.id}')">Edit</button>
+            <button onclick="removeTodo('${item.id}')">Remove</button>
+            `
+            todoList.appendChild(liElement)
+        });
+        
+    }
+
+    function addTodo(){
+        
+        const todo = {
+            id:generateRandomId(4),
+            title:todoTitle.value,
+            description:todoDescription.value,
+            status:false,
+        }
+
+        if(!validationTodo(todo)){ return}
+        
+        if(editTodo){
+            todoServices.editTodo(idEdit,{
+                title:todo.title,
+                description:todo.description,
+            })
+        }else{
+            todoServices.addTodo(todo)
+        }
+        
+        
+
+        resetTodo()
+        renderTodo()
+    }
+
+    function validationTodo(todo){
+        if(!todo.title||!todo.description){
+            errorMessage.style.display="block"
+            return false
+        }else{
+            errorMessage.style.display="none"
+            return true
+        }
+    }
+
+    function editTodo(id){
+        
+        const todo = todoServices.getTodos().find(item=>item.id===id)
+        // console.log(todo.title)
+        if(todo){
+            isEditing=true;
+            idEdit=todo.id
+
+            todoTitle.value=`${todo.title}`;
+            todoDescription.value=`${todo.description}`;
+            
+            addBtn.innerText="Edit"
+
+            // console.log(idEdit)
+        }
+    }
+
+    function removeTodo(id){
+        console.log(id)
+        todoServices.removeTodo(id)
+        resetForm()
+        renderTodo()
+    }
+
+    function resetTodo(){
+        todoTitle.value = ""
+        todoDescription.value = ""
+        
+        errorMessage.style.display="none"
+
+        isEditing=false;
+        idEdit=null;
+
+        addBtn.innerText="Add"
+    }
+
+    function toggleStatus(id){
+        todoServices.toggleStatus(id)
+        renderTodo()
+    }
+
+    function filterTodos(status){
+        console.log(status)
+        switch(status){
+            default:
+                renderTodo()
+                break;
+            case'all':
+                renderTodo()
+                break;
+            case'active':
+                renderTodo(todoServices.filterStatus(false))
+                break;
+            case'completed':
+                renderTodo(todoServices.filterStatus(true))
+                break;
+        }
+       const button = document.querySelectorAll(".filter-section button")
+       button.forEach(item=>item.classList.remove('active'))
+       document.querySelector(`.filter-section button[onclick="filterTodos('${status}')"]`).classList.add("active")
+    }
+
+    //*utility
+    function generateRandomId(n,prefix="todo-"){
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let id = prefix
+        for(let i = 0; i<n;i++){
+            id+=characters.charAt(Math.floor(Math.random()*characters.length))
+        }
+        return id
+    }
+
+    function handleErrorMessage(text){
+        errorMessage.style.display="block"
+        errorMessage.innerText=text
+    }
+
+    //*event listener
+    todoForm.addEventListener("submit",function(event){
+        event.preventDefault();
+        addTodo();
+    })
+    resetBtn.addEventListener("click",resetTodo)
+
+
+    //*initialize
+    renderTodo()
+
+</script>
+</html>
