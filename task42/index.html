@@ -4,40 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <form action="" id="studentForm">
+  <div class="container">
+    <form action="" id="studentForm" class="form-control">
       <h1>Form</h1>
-      <table>
+      <table class="table">
         <tr>
           <td>
             <label for="">Name:</label>
-            <input type="text" id="studentName">
+            <input type="text" id="studentName" class="form-control">
           </td>
         </tr>
         <tr>
           <td>
             <label for="">Math:</label>
-            <input type="number" id="mathPoint" min="0" >
+            <input type="number" id="mathPoint" class="form-control">
           </td>
         </tr>
         <tr>
           <td>
             <label for="">English:</label>
-            <input type="number" id="englishPoint" min="0"  >
+            <input type="number" id="englishPoint" class="form-control">
           </td>
         </tr>
         <tr>
           <td>
             <label for="">Science:</label>
-            <input type="number" id="sciencePoint" min="0" >
+            <input type="number" id="sciencePoint" class="form-control">
           </td>
         </tr>
         <tr>
           <td>
-            <button id="addBtn" type="submit">Add</button>
-            <button id="resetBtn" type="button">reset</button>
+            <button id="addBtn" type="submit" class="btn btn-primary">Add</button>
+            <button id="resetBtn" type="button" class="btn btn-secondary">reset</button>
           </td>
         </tr>
         <tr>
@@ -48,7 +51,7 @@
       </table>
     </form>
     <div class="filterSection">
-      <table>
+      <table class="table">
         <thead>
           <th colspan="3">
             filterSection
@@ -84,7 +87,7 @@
       
       
     </div>
-    <table border="1" style="border-collapse:collapse ;">
+    <table border="1" style="border-collapse:collapse ;" class="table">
       <thead>
         <th colspan="8">Student List</th>
       </thead>
@@ -116,6 +119,8 @@
         </tr> -->
       </tbody>
     </table>
+  </div>
+    
   </body>
   <script src="ex01.js"></script>
 </html>

@@ -66,6 +66,9 @@
             default:
               return data
           }
+        },
+        getStudentByFilter(rank = this.localStudents,type=this.localStudents,name=this.localStudents){
+          return this.filterStudent(rank,this.sortStudentRank(type,this.searchStudent(name)))
         }
       }
       
@@ -88,8 +91,8 @@
             <td>${item.avgPoint}</td>
             <td>${item.rankPoint}</td>
             <td>
-              <button onclick="editStudent('${item.id}')">update</button>
-              <button onclick="removeStudent('${item.id}')">remove</button>
+              <button onclick="editStudent('${item.id}')" class="btn btn-warning">update</button>
+              <button onclick="removeStudent('${item.id}')" class="btn btn-danger">remove</button>
             </td>`
           studentList.appendChild(trElement)
         });
@@ -124,6 +127,10 @@
             handleErrorMessage("Điểm nhập vào không quá 10")
             return false
           }
+          if(item.type==='number'&& +item.value<0){
+            handleErrorMessage("Điểm nhập vào không dưới 0")
+            return false
+          }
         }
         return true
       }
@@ -135,6 +142,7 @@
         errorMessage.style.display="none"
         addBtn.innerText='Add'
         studentName.readOnly=false
+        studentName.focus()
     }
 
        function editStudent(id){
@@ -157,7 +165,7 @@
       }
 
       function filterStudent(rank=document.getElementById('filter').value, name=document.getElementById("search").value, type=document.getElementById('sort').value){
-        renderList(studentServices.filterStudent(rank,studentServices.sortStudentRank(type,studentServices.searchStudent(name))))
+        renderList(studentServices.getStudentByFilter(rank,type,name))
       }
 
       function generateRandomId(n,prefix = 'Student-'){
