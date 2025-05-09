@@ -8,12 +8,8 @@
     const resetBtn = document.getElementById("resetBtn")
     const studentList = document.getElementById("studentList")
     
-
     const studentServices = {
         localStudents:JSON.parse(localStorage.getItem('students')||"[]"),
-        getStudents(){
-          return this.localStudents
-        },
         saveStudents(save){
           let newSave = this.xinchao(save)
           newSave = this.averagePoint(newSave)
@@ -45,46 +41,46 @@
         averagePoint(students){
           const updatedStudents = students.map(item=>{
             let avg = ((item.mathPoint+item.sciencePoint+item.englishPoint)/3).toFixed(2)
-            let rank
             if(avg>=8){return {...item,...{avgPoint:+avg, rankPoint:"good"}}}
             else if(avg<8&&avg>=6){return {...item,...{avgPoint:+avg, rankPoint:"medium"}}}
             else if(avg<6){return {...item,...{avgPoint:+avg, rankPoint:"low"}}}
-          }
-          )
+          })
           return updatedStudents
         },
-        searchStudent(name){
+        searchStudent(name, data = this.localStudents){
           let searchName = name.toLowerCase().trim()
-          return this.localStudents.filter(item=>item.name.toLowerCase().includes(searchName))
+          return data.filter(item=>item.name.toLowerCase().includes(searchName))
         },
-        filterStudent(rank){
-          if(rank){return this.localStudents.filter(item=>item.rankPoint==rank)
-          }else return this.localStudents
+        filterStudent(rank,data = this.localStudents){
+          if(rank){return data.filter(item=>item.rankPoint==rank)
+          }else return data
         },
-        sortStudentRank(type){
+        sortStudentRank(type,data = this.localStudents ){
           switch(type){
             case 'asc':
-              return this.localStudents.sort((a,b)=>a.avgPoint-b.avgPoint)
+              return data.sort((a,b)=>a.avgPoint-b.avgPoint)
             case 'desc':
-              return this.localStudents.sort((a,b)=>b.avgPoint-a.avgPoint)
+              return data.sort((a,b)=>b.avgPoint-a.avgPoint)
+            case '':
+              return data
             default:
-              return this.localStudents
+              return data
           }
         }
-      }  
-
+      }
+      
       let isEditing = false;
       let idEdit = null
 
       function renderList(students=studentServices.localStudents){
         studentList.innerHTML=""
         if(students.length === 0){
-          studentList.innerHTML=`<th colspan=8>không có dữ liệu</td>`
+          studentList.innerHTML=`<th colspan=8>không có dữ liệu</th>`
         }
         students.forEach(item => {
           let trElement = document.createElement("tr")
-          trElement.innerHTML=`
-            <td>${item.id}</td>
+          trElement.innerHTML=
+            `<td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.mathPoint}</td>
             <td>${item.englishPoint}</td>
@@ -94,8 +90,7 @@
             <td>
               <button onclick="editStudent('${item.id}')">update</button>
               <button onclick="removeStudent('${item.id}')">remove</button>
-            </td>
-          `
+            </td>`
           studentList.appendChild(trElement)
         });
         resetForm()
@@ -161,16 +156,8 @@
         renderList()
       }
 
-      function sortStudent(type=document.getElementById('sort').value){
-        renderList(studentServices.sortStudentRank(type))
-      }
-
-      function filterStudent(rank=document.getElementById('filter').value){
-        renderList(studentServices.filterStudent(rank))
-      }
-
-      function searchStudent(name=document.getElementById("search").value){
-        renderList(studentServices.searchStudent(name))
+      function filterStudent(rank=document.getElementById('filter').value, name=document.getElementById("search").value, type=document.getElementById('sort').value){
+        renderList(studentServices.filterStudent(rank,studentServices.sortStudentRank(type,studentServices.searchStudent(name))))
       }
 
       function generateRandomId(n,prefix = 'Student-'){
