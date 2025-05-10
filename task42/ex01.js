@@ -1,3 +1,4 @@
+    //============DOM===========
     const studentForm = document.getElementById("studentForm")
     const studentName = document.getElementById("studentName")
     const mathPoint = document.getElementById("mathPoint")
@@ -7,7 +8,10 @@
     const addBtn = document.getElementById("addBtn")
     const resetBtn = document.getElementById("resetBtn")
     const studentList = document.getElementById("studentList")
+
+   
     
+    //===========Object chứa dữ liệu và hàm thao tác với dữ liệu
     const studentServices = {
         localStudents:JSON.parse(localStorage.getItem('students')||"[]"),
         saveStudents(save){
@@ -37,7 +41,6 @@
         xinchao(students){
           return students.map(item=> ({...item, ...{action:"xinchao"}}) )
         },
-  
         averagePoint(students){
           const updatedStudents = students.map(item=>{
             let avg = ((item.mathPoint+item.sciencePoint+item.englishPoint)/3).toFixed(2)
@@ -71,10 +74,12 @@
           return this.filterStudent(rank,this.sortStudentRank(type,this.searchStudent(name)))
         }
       }
-      
+
+      //========trạng thái edit
       let isEditing = false;
       let idEdit = null
 
+      //========Chức năng chính
       function renderList(students=studentServices.localStudents){
         studentList.innerHTML=""
         if(students.length === 0){
@@ -116,6 +121,57 @@
         renderList()
       }
       
+      function resetForm(){
+        studentForm.reset()
+        isEditing = false;
+        idEdit = null;
+        errorMessage.style.display="none"
+        addBtn.innerText='Add'
+        studentName.readOnly=false
+        
+    }
+
+       function editStudent(id){
+        const student = studentServices.localStudents.find(item=>`${item.id}` === id)
+        if(student){
+         isEditing=true
+         idEdit=student.id
+         addBtn.innerText='Edit'
+         studentName.value= student.name
+         mathPoint.value = student.mathPoint
+         englishPoint.value = student.englishPoint
+         sciencePoint.value = student.sciencePoint
+         studentName.readOnly=true
+         studentName.focus()
+        }
+       }
+
+      function removeStudent(id){
+        studentServices.removeStudent(id)
+        renderList()
+      }
+
+      //===========Chức năng lọc, tìm kiếm, sắp xếp
+      function filterStudent(rank=document.getElementById('filter').value, name=document.getElementById("search").value, type=document.getElementById('sort').value){
+        renderList(studentServices.getStudentByFilter(rank,type,name))
+      }
+
+      //===========Chức năng phụ
+      function generateRandomId(n,prefix = 'Student-'){
+        const characters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890"
+        let id = prefix;
+        for(let i = 0; i<n;i++){
+          id+=characters.charAt(Math.floor(Math.random()*characters.length))
+        }
+        return id
+      }
+
+      function handleErrorMessage(text){
+        errorMessage.style.display="block";
+        errorMessage.innerText=text
+      }
+
+      
       function validation(){
         const inputs = studentForm.querySelectorAll('input')
         for(const item of inputs) {
@@ -135,53 +191,7 @@
         return true
       }
 
-      function resetForm(){
-        studentForm.reset()
-        isEditing = false;
-        idEdit = null;
-        errorMessage.style.display="none"
-        addBtn.innerText='Add'
-        studentName.readOnly=false
-        studentName.focus()
-    }
-
-       function editStudent(id){
-        const student = studentServices.localStudents.find(item=>`${item.id}` === id)
-        if(student){
-         isEditing=true
-         idEdit=student.id
-         addBtn.innerText='Edit'
-         studentName.value= student.name
-         mathPoint.value = student.mathPoint
-         englishPoint.value = student.englishPoint
-         sciencePoint.value = student.sciencePoint
-         studentName.readOnly=true
-        }
-       }
-
-      function removeStudent(id){
-        studentServices.removeStudent(id)
-        renderList()
-      }
-
-      function filterStudent(rank=document.getElementById('filter').value, name=document.getElementById("search").value, type=document.getElementById('sort').value){
-        renderList(studentServices.getStudentByFilter(rank,type,name))
-      }
-
-      function generateRandomId(n,prefix = 'Student-'){
-        const characters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890"
-        let id = prefix;
-        for(let i = 0; i<n;i++){
-          id+=characters.charAt(Math.floor(Math.random()*characters.length))
-        }
-        return id
-      }
-
-      function handleErrorMessage(text){
-        errorMessage.style.display="block";
-        errorMessage.innerText=text
-      }
-
+      //sự kiện cho nút
       studentForm.addEventListener("submit",function(event){
         event.preventDefault()
         addStudent()
@@ -189,4 +199,5 @@
   
       resetBtn.addEventListener("click",resetForm)
 
+      //=========hiển thị
       renderList()
