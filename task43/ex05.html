@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="searchForm">
+        <input type="text" id="searchInput" placeholder="tìm kiếm..." oninput="searchData()">
+        <button type="submit">Tìm Kiếm</button>
+    </form>
+        <select name="" id="sortProduct" onchange="sortData()">
+            <option value="">default</option>
+            <option value="asc">asc</option>
+            <option value="desc">desc</option>
+        </select>
+    <table border="1" style="border-collapse: collapse;" id="renderRequest">
+        <thead id="productsListHeader" >
+            <th>id</th>
+            <th>title</th>
+            <th>description</th>
+            <th>price</th>
+            <th>image</th>
+            <th>action</th>
+        </thead>
+        <tbody id="productsList">
+            
+        </tbody>
+    </table>
+    <script src="ex05.js"></script>
+</body>
+</html>
