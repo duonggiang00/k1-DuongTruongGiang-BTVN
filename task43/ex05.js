@@ -4,42 +4,31 @@ const searchForm = document.getElementById("searchForm")
 const searchInput = document.getElementById("searchInput")
 const renderRequest = document.getElementById("renderRequest")
 const sortProduct = document.getElementById("sortProduct")
+const previousBtn=document.getElementById("previous")
+const nextBtn=document.getElementById("next")
+const currentPage =document.getElementById("current-page")
+
 let localProduct = []
 
-// async function getData(){
-//     const response = await fetch("https://dummyjson.com/products")
-//     const result = await response.json()
-//     const products =result.products
-//     renderList(products);
+// function renderList(products){
+//     productsList.innerHTML=""
+//     products.forEach(item=>{
+//         console.log(item)
+//         let trElement = document.createElement("tr")
+//         trElement.id=`${item.id}`
+//         trElement.innerHTML=`
+//         <td>${item.id}</td>
+//         <td>${item.title}</td>
+//         <td>${item.description}</td>
+//         <td>${item.price}</td>
+//         <td><img src="${item.images}" height="100" alt=""></td>
+//         <td><button onclick="getDetail(${item.id})">Detail</button></td>
+//         `
+//         productsList.appendChild(trElement)
+//     })
 // }
 
-// async function searchData(name){
-    
-//     const response = await fetch(`"https://dummyjson.com/products/search?q=${name}"`)
-//     const result = await response.json()
-//     const products = result.products
-//     renderList(products);
-// }
-
-// getData()
-
-function renderList(products){
-    productsList.innerHTML=""
-    products.forEach(item=>{
-        console.log(item)
-        let trElement = document.createElement("tr")
-        trElement.id=`${item.id}`
-        trElement.innerHTML=`
-        <td>${item.id}</td>
-        <td>${item.title}</td>
-        <td>${item.description}</td>
-        <td>${item.price}</td>
-        <td><img src="${item.images}" height="100" alt=""></td>
-        <td><button onclick="getDetail(${item.id})">Detail</button></td>
-        `
-        productsList.appendChild(trElement)
-    })
-}
+   
 
 function getData(){
     fetch("https://dummyjson.com/products")
@@ -55,7 +44,7 @@ function getData(){
         console.log(error)
     })
 }
-getData()
+// getData()
 
 
 
@@ -91,7 +80,7 @@ function sortData(type=sortProduct.value){
         case 'desc':
             return renderList(data = localProduct.sort((a,b)=>b.price-a.price))
         case '':
-            return renderList(getData())
+            return renderList(localProduct)
     }
     
 }
@@ -157,3 +146,19 @@ searchForm.addEventListener("submit",function(event){
     event.preventDefault()
 })
 
+let page = 1;
+let limit =12;
+let skip = (page-1)*limit
+
+const fetchProducts = async(limit = 12, skip = 10)=>{
+    try {
+        const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}&select=title,price`)
+        const { products } = await res.json();
+        console.log(products);
+        localProduct=products
+        renderList(products)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+fetchProducts()

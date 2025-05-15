@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" id="searchForm">
+            <input type="text" placeholder="search" id="searchInput" oninput="searchProduct()">
+            <select name="" id="sortType" onchange="sortProduct()">
+                <option value="">default</option>
+                <option value="asc">ascend</option>
+                <option value="desc">descend</option>
+            </select>
+        </form>
+        <div class="productList" id="productList">
+            
+        </div>
+        <div class="paginate" id="paginate">
+            <button id="preBtn">Previous</button>
+            <div class="pages">
+                <button id="curPage">Page</button>
+            </div>
+            
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
